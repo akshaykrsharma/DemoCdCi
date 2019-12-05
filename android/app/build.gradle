@@ -147,6 +147,12 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            keyAlias System.getenv('ANDROID_KS_ALIAS')
+            keyPassword System.getenv('ANDROID_KS_PASSWORD')
+            storeFile file(System.getenv('ANDROID_KS_FILE'))
+            storePassword System.getenv('ANDROID_KS_PASSWORD')
+        }
     }
     buildTypes {
         debug {
@@ -175,6 +181,8 @@ android {
         }
     }
     buildToolsVersion '28.0.3'
+    productFlavors {
+    }
 }
 
 dependencies {
