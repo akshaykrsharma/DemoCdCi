@@ -147,6 +147,12 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            keyAlias 'democdci'
+            keyPassword 'democdci.akshay'
+            storeFile file('/Users/punchh_akshyas/Projects/DemoCdCi/android/secure/democdci.keystore')
+            storePassword 'democdci.akshay'
+        }
     }
     buildTypes {
         debug {
@@ -175,6 +181,8 @@ android {
         }
     }
     buildToolsVersion '28.0.3'
+    productFlavors {
+    }
 }
 
 dependencies {
