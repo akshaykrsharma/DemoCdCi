@@ -129,7 +129,7 @@ android {
         applicationId "com.democdci"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
+        versionCode 5
         versionName "1.0"
     }
     splits {
@@ -147,11 +147,17 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+//        release {
+//            keyAlias System.getenv('ANDROID_LS_ALIAS')
+//            keyPassword System.getenv('ANDROID_LS_PASSWORD')
+//            storeFile file(System.getenv('ANDROID_LS_FILE'))
+//            storePassword System.getenv('ANDROID_LS_PASSWORD')
+//        }
         release {
-            keyAlias System.getenv('ANDROID_KS_ALIAS')
-            keyPassword System.getenv('ANDROID_KS_PASSWORD')
-            storeFile file(System.getenv('ANDROID_KS_FILE'))
-            storePassword System.getenv('ANDROID_KS_PASSWORD')
+            keyAlias 'democdci'
+            keyPassword 'democdci.akshay'
+            storeFile file('/Users/punchh_akshyas/Projects/DemoCdCi/android/secure/democdci.keystore')
+            storePassword 'democdci.akshay'
         }
     }
     buildTypes {
@@ -161,7 +167,7 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://facebook.github.io/react-native/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
