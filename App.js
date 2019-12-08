@@ -31,7 +31,7 @@ const App: () => React$Node = () => {
 					)}
 					<View style={styles.body}>
 						<View style={styles.sectionContainer}>
-							<Text style={styles.sectionTitle}>BUNDLE is UPDATED</Text>
+							<Text style={styles.sectionTitle}>Build Uploaded from bitrise</Text>
 							<Text style={styles.sectionDescription}>
 								Edit <Text style={styles.highlight}>App.js</Text> Good
 							</Text>
