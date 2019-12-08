@@ -129,7 +129,7 @@ android {
         applicationId "com.democdci"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 9
+        versionCode 12
         versionName "1.0"
     }
     splits {
@@ -148,10 +148,9 @@ android {
             keyPassword 'android'
         }
         release {
+            storeFile file("../secure/${System.getenv('ANDROID_LS_FILE')}")
             keyAlias System.getenv('ANDROID_LS_ALIAS')
             keyPassword System.getenv('ANDROID_LS_PASSWORD')
-            storeFile file('../secure/democdci.keystore')
-            //storeFile file("{System.getenv('ANDROID_KS_FILE')}")
             storePassword System.getenv('ANDROID_LS_PASSWORD')
         }
 //        release {
