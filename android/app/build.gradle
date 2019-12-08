@@ -129,7 +129,7 @@ android {
         applicationId "com.democdci"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 5
+        versionCode 13
         versionName "1.0"
     }
     splits {
@@ -147,18 +147,18 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
-//        release {
-//            keyAlias System.getenv('ANDROID_LS_ALIAS')
-//            keyPassword System.getenv('ANDROID_LS_PASSWORD')
-//            storeFile file(System.getenv('ANDROID_LS_FILE'))
-//            storePassword System.getenv('ANDROID_LS_PASSWORD')
-//        }
         release {
-            keyAlias 'democdci'
-            keyPassword 'democdci.akshay'
-            storeFile file('/Users/punchh_akshyas/Projects/DemoCdCi/android/secure/democdci.keystore')
-            storePassword 'democdci.akshay'
+            storeFile file("${System.getenv('ANDROID_LS_FILE')}")
+            keyAlias System.getenv('ANDROID_LS_ALIAS')
+            keyPassword System.getenv('ANDROID_LS_PASSWORD')
+            storePassword System.getenv('ANDROID_LS_PASSWORD')
         }
+//        release {
+//            keyAlias 'democdci'
+//            keyPassword 'democdci.akshay'
+//            storeFile file('/Users/punchh_akshyas/Projects/DemoCdCi/android/secure/democdci.keystore')
+//            storePassword 'democdci.akshay'
+//        }
     }
     buildTypes {
         debug {

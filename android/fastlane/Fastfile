@@ -34,14 +34,15 @@ platform :android do
   desc "Deploy a new version to Alpha"
   lane :alpha do
   GRADLE_APK_OUTPUT_PATH="./app/build/outputs/apk/release/app-release.apk"
+  GRADLE_AAB_OUTPUT_PATH="./app/build/outputs/apk/release/app.aab"
    version_code = increment_version_code(
       gradle_file_path: "./app/build.gradle"
     )
     gradle(task: "clean assembleRelease")
+    
     supply(
       track:"alpha",
       apk: "#{lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]}",
-      #aab:"./app/build/outputs/apk/release/app.aab",
       json_key:"./secure/service-account-file.json"
     )
 
