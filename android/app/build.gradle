@@ -129,7 +129,7 @@ android {
         applicationId "com.democdci"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 17
+        versionCode 22
         versionName "1.0"
     }
     splits {
@@ -156,7 +156,7 @@ android {
 //        release {
 //            keyAlias 'democdci'
 //            keyPassword 'democdci.akshay'
-//            storeFile file('/Users/punchh_akshyas/Projects/DemoCdCi/android/secure/democdci.keystore')
+//            storeFile file('../secure/democdci.keystore')
 //            storePassword 'democdci.akshay'
 //        }
     }
