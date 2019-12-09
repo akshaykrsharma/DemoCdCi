@@ -69,7 +69,7 @@ platform :android do
     )
 
     # git_commit(
-    #   path:"./app/build.gradle",
+    #   path:"../../*",
     #   message:"Fastlane internal Android released #{version_code} [ci skip]"
     # )
 
