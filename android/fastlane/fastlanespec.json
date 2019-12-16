@@ -1,0 +1,11 @@
+{
+	"ios_bundle_id": "com.democdci",
+	"xcodeproj": "./ios/democdci.xcodeproj",
+	"workspace": "./ios/democdci.xcworkspace",
+	"android_bundle_id": "com.democdci",
+	"git_repo": "democdci",
+	"git_branch": "master",
+	"gradle_file_path": "./app/build.gradle",
+	"gradle_properties_file_path": "android/gradle.properties",
+	"release_manager_json_path": "./secure/service-account-file.json"
+}

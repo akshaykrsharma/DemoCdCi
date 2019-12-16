@@ -15,6 +15,13 @@
 
 default_platform(:android)
 
+# 'Read the specs from the file'
+def read_spec(key)
+  file = File.read('fastlanespec.json')
+  specs = JSON.parse(file)
+  specs[key]
+end 
+
 platform :android do
   desc "Runs all the tests"
   lane :test do
@@ -30,14 +37,21 @@ platform :android do
     # You can also use other beta testing services here
   end
 
+  def get_updated_version_code_from_playstore
+    productionVersionCode = google_play_track_version_codes(package_name: read_spec('android_bundle_id'), track: "production", json_key: read_spec('release_manager_json_path'))
+    alphaVersionCode = google_play_track_version_codes(package_name: read_spec('android_bundle_id'), track: "alpha", json_key: read_spec('release_manager_json_path'))
+    internalVersionCode = google_play_track_version_codes(package_name: read_spec('android_bundle_id'), track: "internal", json_key: read_spec('release_manager_json_path'))
+    betaVersionCode = google_play_track_version_codes(package_name: read_spec('android_bundle_id'), track: "beta", json_key: read_spec('release_manager_json_path'))
+    maxValue=[productionVersionCode,alphaVersionCode,internalVersionCode,betaVersionCode].max[0].to_i + 1
+  end
+
 
   desc "Deploy a new version to Alpha"
   lane :alpha do
   GRADLE_APK_OUTPUT_PATH="./app/build/outputs/apk/release/app-release.apk"
   GRADLE_AAB_OUTPUT_PATH="./app/build/outputs/apk/release/app.aab"
-   version_code = increment_version_code(
-      gradle_file_path: "./app/build.gradle"
-    )
+  increment_version_code(version_code: get_updated_version_code_from_playstore(), gradle_file_path: read_spec('gradle_file_path'))
+   
     gradle(task: "clean assembleRelease")
     
     supply(
@@ -46,21 +60,27 @@ platform :android do
       json_key:"./secure/service-account-file.json"
     )
 
-    git_commit(
-      path:"./app/build.gradle",
-      message:"Fastlane Android released #{version_code} [ci skip]"
-    )
+    # git_commit(
+    #   path:"./app/build.gradle",
+    #   message:"Fastlane Android released #{version_code} [ci skip]"
+    # )
   end
+
+  desc "check Current versionCode"
+  lane :bundleNumber do
+    puts get_updated_version_code_from_playstore()
+  end
+
 
 
   desc "Deploy a new version to Internal"
   lane :internal do
   GRADLE_APK_OUTPUT_PATH="./app/build/outputs/apk/release/app-release.apk"
   GRADLE_AAB_OUTPUT_PATH="./app/build/outputs/apk/release/app.aab"
-   version_code = increment_version_code(
-      gradle_file_path: "./app/build.gradle"
-    )
-    gradle(task: "clean assembleRelease")
+  
+  increment_version_code(version_code: get_updated_version_code_from_playstore(), gradle_file_path: read_spec('gradle_file_path'))
+
+  gradle(task: "clean assembleRelease")
     
     supply(
       track:"internal",

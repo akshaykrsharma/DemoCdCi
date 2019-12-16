@@ -31,6 +31,11 @@ Submit a new Beta Build to Crashlytics Beta
 fastlane android alpha
 ```
 Deploy a new version to Alpha
+### android bundleNumber
+```
+fastlane android bundleNumber
+```
+check Current versionCode
 ### android internal
 ```
 fastlane android internal
