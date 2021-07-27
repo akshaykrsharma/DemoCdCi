@@ -35,5 +35,5 @@ jobs:
 
       - name: Run release alpha
         run: |
-          cd android
+          ls -la
           bundle exec fastlane alpha
