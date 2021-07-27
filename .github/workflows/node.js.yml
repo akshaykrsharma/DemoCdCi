@@ -22,8 +22,6 @@ jobs:
           name: app-release.apk
           path: android/app/build/outputs/apk/release
       - name: released android using fastlane
-      - uses: actions/checkout@v2
+      # - uses: actions/checkout@v2
       - uses: actions/setup-ruby@v1
-          with:
-          ruby-version: '2.7.2'
         run: cd android && bundle exec fastlane alpha
