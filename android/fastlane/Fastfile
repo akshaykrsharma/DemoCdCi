@@ -41,7 +41,7 @@ platform :android do
     productionVersionCode = google_play_track_version_codes(package_name: read_spec('android_bundle_id'), track: "production", json_key: read_spec('release_manager_json_path'))
     alphaVersionCode = google_play_track_version_codes(package_name: read_spec('android_bundle_id'), track: "alpha", json_key: read_spec('release_manager_json_path'))
     internalVersionCode = google_play_track_version_codes(package_name: read_spec('android_bundle_id'), track: "internal", json_key: read_spec('release_manager_json_path'))
-    betaVersionCode = google_play_track_version_codes(package_name: read_spec('android_bundle_id'), track: "beta", json_key: read_spec('release_manager_json_path'))
+    # betaVersionCode = google_play_track_version_codes(package_name: read_spec('android_bundle_id'), track: "beta", json_key: read_spec('release_manager_json_path'))
     maxValue=[productionVersionCode,alphaVersionCode,internalVersionCode,betaVersionCode].max[0].to_i + 1
   end
 
