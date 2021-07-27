@@ -17,8 +17,14 @@ jobs:
           java-version: 1.8
       - name: Access APOD_API_KEY
         env:
-          APOD_API_KEY: ${{ secrets.APOD_API_KEY }}
-        run: echo APOD_API_KEY=\"$APOD_API_KEY\" > ./local.properties
+          ANDROID_LS_ALIAS: ${{ secrets.ANDROID_LS_ALIAS }}
+          ANDROID_LS_PASSWORD: ${{ secrets.ANDROID_LS_PASSWORD }}
+          ANDROID_KEYSTORE_PATH: ${{ secrets.ANDROID_KEYSTORE_PATH }}
+          TEST:"Helloo"
+        run: |
+          export ANDROID_LS_ALIAS=\"$ANDROID_LS_ALIAS\"
+          export ANDROID_LS_PASSWORD=\"$ANDROID_LS_PASSWORD\"
+          export ANDROID_KEYSTORE_PATH=\"$ANDROID_KEYSTORE_PATH\"
 
       - uses: actions/checkout@v2
       - name: Install npm dependencies
