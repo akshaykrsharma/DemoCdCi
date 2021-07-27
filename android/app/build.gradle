@@ -148,9 +148,9 @@ android {
             keyPassword 'android'
         }
        release {
-           storeFile file("${System.getenv('ANDROID_LS_FILE')}")
            keyAlias System.getenv('ANDROID_LS_ALIAS')
            keyPassword System.getenv('ANDROID_LS_PASSWORD')
+           storeFile file("${System.getenv('ANDROID_KEYSTORE_PATH')}")
            storePassword System.getenv('ANDROID_LS_PASSWORD')
        }
         // release {
