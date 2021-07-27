@@ -150,7 +150,7 @@ android {
        release {
            keyAlias System.getenv('ANDROID_LS_ALIAS')
            keyPassword System.getenv('ANDROID_LS_PASSWORD')
-           storeFile file("${System.getenv('ANDROID_KEYSTORE_PATH')}")
+           storeFile file('../secure/democdci.keystore')
            storePassword System.getenv('ANDROID_LS_PASSWORD')
        }
         // release {
