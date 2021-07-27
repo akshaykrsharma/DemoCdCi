@@ -147,24 +147,25 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
-//        release {
-//            storeFile file("${System.getenv('ANDROID_LS_FILE')}")
-//            keyAlias System.getenv('ANDROID_LS_ALIAS')
-//            keyPassword System.getenv('ANDROID_LS_PASSWORD')
-//            storePassword System.getenv('ANDROID_LS_PASSWORD')
-//        }
+       release {
+           keyAlias System.getenv('ANDROID_LS_ALIAS')
+           keyPassword System.getenv('ANDROID_LS_PASSWORD')
+        //    storeFile file("${System.getenv('ANDROID_LS_FILE')}")
+           storeFile file('../secure/democdci.keystore')
+           storePassword System.getenv('ANDROID_LS_PASSWORD')
+       }
         // release {
         //     keyAlias 'democdci'
         //     keyPassword 'democdci.akshay'
         //     storeFile file('../secure/democdci.keystore')
         //     storePassword 'democdci.akshay'
         // }
-        release {
-            keyAlias "${{ secrets.ANDROID_LS_ALIAS }}"
-            keyPassword "${{ secrets.ANDROID_LS_PASSWORD }}"
-            storeFile file("${{ secrets.ANDROID_KEYSTORE_PATH }}")
-            storePassword "${{ secrets.ANDROID_LS_PASSWORD }}"
-        }
+        // release {
+        //     keyAlias "${{ secrets.ANDROID_LS_ALIAS }}"
+        //     keyPassword "${{ secrets.ANDROID_LS_PASSWORD }}"
+        //     storeFile file("${{ secrets.ANDROID_KEYSTORE_PATH }}")
+        //     storePassword "${{ secrets.ANDROID_LS_PASSWORD }}"
+        // }
     }
     buildTypes {
         debug {
