@@ -30,7 +30,9 @@ jobs:
 
       - name: Run release alpha
         run: |
-          ls -la
           cd android
+          rm -rf Gemfile.lock
+          bundle update --all
+          gem update bundler
           ls -la
           bundle exec fastlane alpha
