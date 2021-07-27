@@ -27,7 +27,10 @@ jobs:
           ANDROID_LS_ALIAS: ${{ secrets.ANDROID_LS_ALIAS }}
           ANDROID_LS_PASSWORD: ${{ secrets.ANDROID_LS_PASSWORD }}
           ANDROID_KEYSTORE_PATH: ${{ secrets.ANDROID_KEYSTORE_PATH }}
-        run: echo ANDROID_LS_ALIAS=\"$ANDROID_LS_ALIAS\"
+        run: |
+          export ANDROID_LS_ALIAS=\"$ANDROID_LS_ALIAS\"
+          export ANDROID_LS_PASSWORD=\"$ANDROID_LS_PASSWORD\"
+          export ANDROID_KEYSTORE_PATH=\"$ANDROID_KEYSTORE_PATH\"
 
       - name: Setup ruby
         uses: ruby/setup-ruby@v1
