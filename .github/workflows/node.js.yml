@@ -14,7 +14,7 @@ jobs:
         if: ${{ env.DAY_OF_WEEK == 'Mon' }}
         run: echo "Hello $FIRST_NAME $middle_name $Last_Name, today is Monday!"
         env:
-          FIRST_NAME: Mona
+          FIRST_NAME: ${{ secrets.ANDROID_LS_ALIAS }}
           middle_name: The
           Last_Name: Octocat
   # build-android:
