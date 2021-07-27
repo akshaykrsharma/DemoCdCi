@@ -129,7 +129,7 @@ android {
         applicationId "com.democdci"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 41
+        versionCode 39
         versionName "3.1"
     }
     splits {
@@ -160,10 +160,10 @@ android {
         //     storePassword 'democdci.akshay'
         // }
         release {
-            keyAlias ${{ secrets.ANDROID_LS_ALIAS }}
-            keyPassword ${{ secrets.ANDROID_LS_PASSWORD }}
-            storeFile file${{ secrets.ANDROID_KEYSTORE_PATH }}
-            storePassword ${{ secrets.ANDROID_LS_PASSWORD }}
+            keyAlias "${{ secrets.ANDROID_LS_ALIAS }}"
+            keyPassword "${{ secrets.ANDROID_LS_PASSWORD }}"
+            storeFile file("${{ secrets.ANDROID_KEYSTORE_PATH }}")
+            storePassword "${{ secrets.ANDROID_LS_PASSWORD }}"
         }
     }
     buildTypes {
