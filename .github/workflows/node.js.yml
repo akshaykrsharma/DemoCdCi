@@ -22,4 +22,4 @@ jobs:
           name: app-release.apk
           path: android/app/build/outputs/apk/release
       - name: released android using fastlane
-        run: bundle exec fastlane alpha
+        run: cd android && bundle exec fastlane alpha
