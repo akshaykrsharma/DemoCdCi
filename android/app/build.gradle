@@ -153,11 +153,17 @@ android {
 //            keyPassword System.getenv('ANDROID_LS_PASSWORD')
 //            storePassword System.getenv('ANDROID_LS_PASSWORD')
 //        }
+        // release {
+        //     keyAlias 'democdci'
+        //     keyPassword 'democdci.akshay'
+        //     storeFile file('../secure/democdci.keystore')
+        //     storePassword 'democdci.akshay'
+        // }
         release {
-            keyAlias 'democdci'
-            keyPassword 'democdci.akshay'
-            storeFile file('../secure/democdci.keystore')
-            storePassword 'democdci.akshay'
+            keyAlias ${{ secrets.ANDROID_LS_ALIAS }}
+            keyPassword ${{ secrets.ANDROID_LS_PASSWORD }}
+            storeFile file${{ secrets.ANDROID_KEYSTORE_PATH }}
+            storePassword ${{ secrets.ANDROID_LS_PASSWORD }}
         }
     }
     buildTypes {
