@@ -31,4 +31,6 @@ jobs:
       - name: Run release alpha
         run: |
           ls -la
-          # bundle exec fastlane alpha
+          cd android
+          ls -la
+          bundle exec fastlane alpha
