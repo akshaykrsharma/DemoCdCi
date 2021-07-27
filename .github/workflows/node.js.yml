@@ -22,22 +22,18 @@ jobs:
       #     name: app-release.apk
       #     path: android/app/build/outputs/apk/release
 
+      - name: set Environmental Variables
+        env:
+          ANDROID_LS_ALIAS: ${{ secrets.ANDROID_LS_ALIAS }}
+          ANDROID_LS_PASSWORD: ${{ secrets.ANDROID_LS_PASSWORD }}
+          ANDROID_KEYSTORE_PATH: ${{ secrets.ANDROID_KEYSTORE_PATH }}
+        run: echo ANDROID_LS_ALIAS=\"$ANDROID_LS_ALIAS\"
+
       - name: Setup ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7.2
           bundler-cache: true
-
-       - name: set Environmental Variables
-        env:
-          ANDROID_LS_ALIAS: ${{ secrets.ANDROID_LS_ALIAS }}
-          ANDROID_LS_PASSWORD: ${{ secrets.ANDROID_LS_PASSWORD }}
-          ANDROID_KEYSTORE_PATH: ${{ secrets.ANDROID_KEYSTORE_PATH }}
-        run: |
-          echo ANDROID_LS_ALIAS=\"$ANDROID_LS_ALIAS\"   
-          echo ANDROID_LS_PASSWORD=\"$ANDROID_LS_PASSWORD\"   
-          echo ANDROID_KEYSTORE_PATH=\"$ANDROID_KEYSTORE_PATH\"   
-
 
       - name: Run release alpha
         run: |
