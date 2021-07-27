@@ -16,9 +16,7 @@ jobs:
           ANDROID_LS_PASSWORD: ${{ secrets.ANDROID_LS_PASSWORD }}
           ANDROID_KEYSTORE_PATH: ${{ secrets.ANDROID_KEYSTORE_PATH }}
           TEST:"Helloo"
-        run: export ANDROID_LS_ALIAS=\"$ANDROID_LS_ALIAS\"
-          export ANDROID_LS_PASSWORD=\"$ANDROID_LS_PASSWORD\"
-          export ANDROID_KEYSTORE_PATH=\"$ANDROID_KEYSTORE_PATH\"
+        run: |
           echo TEST=\"$TEST\"
 
       - name: Install npm dependencies
