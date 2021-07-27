@@ -5,52 +5,58 @@ on:
     branches:
       - master
 jobs:
-  build-android:
-    # needs: install-and-test
+  weekday_job:
     runs-on: ubuntu-latest
+    env:
+      DAY_OF_WEEK: Mon
     steps:
-      - name: Checkout the code
-        uses: actions/checkout@v2
-      - name: set up JDK 1.8
-        uses: actions/setup-java@v1
-        with:
-          java-version: 1.8
-      - name: Access APOD_API_KEY
+      - name: "Hello world when it's Monday"
+        if: ${{ env.DAY_OF_WEEK == 'Mon' }}
+        run: echo "Hello $FIRST_NAME $middle_name $Last_Name, today is Monday!"
         env:
-          ANDROID_LS_ALIAS: ${{ secrets.ANDROID_LS_ALIAS }}
-          ANDROID_LS_PASSWORD: ${{ secrets.ANDROID_LS_PASSWORD }}
-          ANDROID_KEYSTORE_PATH: ${{ secrets.ANDROID_KEYSTORE_PATH }}
-        run: export ANDROID_LS_ALIAS="democdci"
-          export ANDROID_LS_PASSWORD="democdci.akshay"
-          export ANDROID_KEYSTORE_PATH="../secure/democdci.keystore"
-
-        # run: export ANDROID_LS_ALIAS=\"$ANDROID_LS_ALIAS\"
-        #   export ANDROID_LS_PASSWORD=\"$ANDROID_LS_PASSWORD\"
-        #   export ANDROID_KEYSTORE_PATH=\"$ANDROID_KEYSTORE_PATH\"
-      - uses: actions/checkout@v2
-      - name: Install npm dependencies
-        run: |
-          npm install
-      # - name: Build Android Release
-      #   run: |
-      #     cd android && ./gradlew assembleRelease
-      # - name: Upload Artifact
-      #   uses: actions/upload-artifact@v1
-      #   with:
-      #     name: app-release.apk
-      #     path: android/app/build/outputs/apk/release
-
-      - name: Setup ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.7.2
-          bundler-cache: true
-
-      - name: Run release alpha
-        run: |
-          cd android
-          rm -rf Gemfile.lock
-          bundle update --all
-          gem update bundler
-          ls -la
-          bundle exec fastlane alpha
+          FIRST_NAME: Mona
+          middle_name: The
+          Last_Name: Octocat
+  # build-android:
+  #   # needs: install-and-test
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout the code
+  #       uses: actions/checkout@v2
+  #     - name: set up JDK 1.8
+  #       uses: actions/setup-java@v1
+  #       with:
+  #         java-version: 1.8
+  #     - name: Access APOD_API_KEY
+  #       env:
+  #         ANDROID_LS_ALIAS: ${{ secrets.ANDROID_LS_ALIAS }}
+  #         ANDROID_LS_PASSWORD: ${{ secrets.ANDROID_LS_PASSWORD }}
+  #         ANDROID_KEYSTORE_PATH: ${{ secrets.ANDROID_KEYSTORE_PATH }}
+  #       run: export ANDROID_LS_ALIAS=\"$ANDROID_LS_ALIAS\"
+  #         export ANDROID_LS_PASSWORD=\"$ANDROID_LS_PASSWORD\"
+  #         export ANDROID_KEYSTORE_PATH=\"$ANDROID_KEYSTORE_PATH\"
+  #     - uses: actions/checkout@v2
+  #     - name: Install npm dependencies
+  #       run: |
+  #         npm install
+  #     # - name: Build Android Release
+  #     #   run: |
+  #     #     cd android && ./gradlew assembleRelease
+  #     # - name: Upload Artifact
+  #     #   uses: actions/upload-artifact@v1
+  #     #   with:
+  #     #     name: app-release.apk
+  #     #     path: android/app/build/outputs/apk/release
+  #     - name: Setup ruby
+  #       uses: ruby/setup-ruby@v1
+  #       with:
+  #         ruby-version: 2.7.2
+  #         bundler-cache: true
+  #     - name: Run release alpha
+  #       run: |
+  #         cd android
+  #         rm -rf Gemfile.lock
+  #         bundle update --all
+  #         gem update bundler
+  #         ls -la
+  #         bundle exec fastlane alpha
