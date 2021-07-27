@@ -21,10 +21,19 @@ jobs:
         with:
           name: app-release.apk
           path: android/app/build/outputs/apk/release
+
+  release_android:
+    name: Release build on alpha
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Setup ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: 2.7.2
-        bundler-cache: true        
-      - name: released android using fastlane
-        run: cd android && bundle exec fastlane alpha
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.2
+          bundler-cache: true
+
+      - name: Run release alpha
+        run: |
+          cd android
+          bundle exec fastlane alpha
