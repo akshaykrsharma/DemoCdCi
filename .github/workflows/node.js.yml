@@ -9,15 +9,21 @@ jobs:
     # needs: install-and-test
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+      - name: set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Access APOD_API_KEY
+        env:
+          APOD_API_KEY: ${{ secrets.APOD_API_KEY }}
+        run: echo APOD_API_KEY=\"$APOD_API_KEY\" > ./local.properties
+
       - uses: actions/checkout@v2
       - name: Install npm dependencies
         run: |
           npm install
-
-      - name: Access APOD_API_KEY
-        env:
-          APOD_API_KEY: ${{ secrets.APOD_API_KEY }}
-          run: echo APOD_API_KEY=\"$APOD_API_KEY\" > ./local.properties
       # - name: Build Android Release
       #   run: |
       #     cd android && ./gradlew assembleRelease
