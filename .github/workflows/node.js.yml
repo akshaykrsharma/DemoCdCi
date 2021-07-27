@@ -22,11 +22,6 @@ jobs:
           name: app-release.apk
           path: android/app/build/outputs/apk/release
 
-  release_android:
-    name: Release build on alpha
-    runs-on: ubuntu-latest
-
-    steps:
       - name: Setup ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -36,4 +31,4 @@ jobs:
       - name: Run release alpha
         run: |
           ls -la
-          bundle exec fastlane alpha
+          # bundle exec fastlane alpha
