@@ -28,11 +28,11 @@ jobs:
           ruby-version: 2.7.2
           bundler-cache: true
 
-      - name: Run release production
+      - name: Run release alpha
         run: |
           cd android
           rm -rf Gemfile.lock
           bundle update --all
           gem update bundler
           ls -la
-          bundle exec fastlane production
+          bundle exec fastlane alpha
