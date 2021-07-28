@@ -130,7 +130,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 39
-        versionName "3.1"
+        versionName "3.2"
     }
     splits {
         abi {
@@ -147,18 +147,18 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
-       release {
-           keyAlias System.getenv('ANDROID_LS_ALIAS')
-           keyPassword System.getenv('ANDROID_LS_PASSWORD')
-           storeFile file('../secure/democdci.keystore')
-           storePassword System.getenv('ANDROID_LS_PASSWORD')
-       }
-        // release {
-        //     keyAlias 'democdci'
-        //     keyPassword 'democdci.akshay'
-        //     storeFile file('../secure/democdci.keystore')
-        //     storePassword 'democdci.akshay'
-        // }
+    //    release {
+    //        keyAlias System.getenv('ANDROID_LS_ALIAS')
+    //        keyPassword System.getenv('ANDROID_LS_PASSWORD')
+    //        storeFile file('../secure/democdci.keystore')
+    //        storePassword System.getenv('ANDROID_LS_PASSWORD')
+    //    }
+        release {
+            keyAlias 'democdci'
+            keyPassword 'democdci.akshay'
+            storeFile file('../secure/democdci.keystore')
+            storePassword 'democdci.akshay'
+        }
         // release {
         //     keyAlias "${{ secrets.ANDROID_LS_ALIAS }}"
         //     keyPassword "${{ secrets.ANDROID_LS_PASSWORD }}"
