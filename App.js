@@ -11,7 +11,9 @@ import {StyleSheet, Text} from 'react-native';
 
 const App = () => {
   return (
-    <Text style={styles.sectionTitle}>Build Uploaded from GITHUB Actions</Text>
+    <Text style={styles.sectionTitle}>
+      Build Uploaded from GITHUB Actions \n\n\n\n sharma.akshay5@gmail.com
+    </Text>
   );
 };
 
