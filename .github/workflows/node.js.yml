@@ -8,15 +8,12 @@ jobs:
   weekday_job:
     runs-on: ubuntu-latest
     env:
-      DAY_OF_WEEK: Mon
+      ANDROID_LS_ALIAS: ${{ secrets.ANDROID_LS_ALIAS }}
+      ANDROID_LS_PASSWORD: ${{ secrets.ANDROID_LS_PASSWORD }}
+      ANDROID_KEYSTORE_PATH: ${{ secrets.ANDROID_KEYSTORE_PATH }}
     steps:
       - name: "Hello world when it's Monday"
-        if: ${{ env.DAY_OF_WEEK == 'Mon' }}
-        run: echo "Hello $ANDROID_LS_ALIAS $ANDROID_LS_PASSWORD $ANDROID_KEYSTORE_PATH, today is Monday!"
-        env:
-          ANDROID_LS_ALIAS: ${{ secrets.ANDROID_LS_ALIAS }}
-          ANDROID_LS_PASSWORD: ${{ secrets.ANDROID_LS_PASSWORD }}
-          ANDROID_KEYSTORE_PATH: ${{ secrets.ANDROID_KEYSTORE_PATH }}
+        run: echo "Hello $ANDROID_LS_ALIAS $ANDROID_LS_PASSWORD $ANDROID_KEYSTORE_PATH!"
 
   build-android:
     # needs: install-and-test
@@ -26,14 +23,14 @@ jobs:
       - name: Install npm dependencies
         run: |
           npm install
-      - name: Build Android Release
-        run: |
-          cd android && ./gradlew assembleRelease
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: app-release.apk
-          path: android/app/build/outputs/apk/release
+      # - name: Build Android Release
+      #   run: |
+      #     cd android && ./gradlew assembleRelease
+      # - name: Upload Artifact
+      #   uses: actions/upload-artifact@v1
+      #   with:
+      #     name: app-release.apk
+      #     path: android/app/build/outputs/apk/release
 
       - name: Setup ruby
         uses: ruby/setup-ruby@v1
