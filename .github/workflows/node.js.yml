@@ -41,7 +41,7 @@ jobs:
           track: alpha
           inAppUpdatePriority: 2
           userFraction: 0.33
-          whatsNewDirectory: distribution/whatsnew
+          whatsNewDirectory: 'build'
           mappingFile: android/app/build/outputs/mapping/release/mapping.txt
       # - name: Setup ruby
       #   uses: ruby/setup-ruby@v1
