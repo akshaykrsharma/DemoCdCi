@@ -38,10 +38,10 @@ jobs:
           serviceAccountJson: 'android/secure/service-account-file.json'
           packageName: com.democdci
           releaseFile: 'android/app/build/outputs/apk/release'
-          track: alpha
+          track: production
           inAppUpdatePriority: 2
           userFraction: 0.33
-          whatsNewDirectory: 'build testing'
+          whatsNewDirectory: distribution/
           mappingFile: android/app/build/outputs/mapping/release/mapping.txt
       # - name: Setup ruby
       #   uses: ruby/setup-ruby@v1
