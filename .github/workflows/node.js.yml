@@ -46,7 +46,7 @@ jobs:
           packageName: com.democdci
           releaseFile: './android/app/build/outputs/apk/release'
           track: production
-          whatsNewDirectory: distribution/
+          whatsNewDirectory: ./android/distribution/
           mappingFile: ./android/app/build/outputs/mapping/release/mapping.txt
       # - name: Setup ruby
       #   uses: ruby/setup-ruby@v1
