@@ -44,7 +44,7 @@ jobs:
         with:
           serviceAccountJson: './android/secure/service-account-file.json'
           packageName: com.democdci
-          releaseFile: './android/app/build/outputs/apk/release'
+          releaseFile: './android/app/build/outputs/apk/release/app-release.apk'
           track: production
           whatsNewDirectory: ./android/distribution/
           # mappingFile: ./android/app/build/outputs/mapping/release/mapping.txt
