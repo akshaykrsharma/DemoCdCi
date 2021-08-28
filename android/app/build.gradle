@@ -129,8 +129,8 @@ android {
         applicationId "com.democdci"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 48
-        versionName "7.1"
+        versionCode 49
+        versionName "7.2"
     }
     splits {
         abi {

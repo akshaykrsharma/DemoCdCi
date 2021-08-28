@@ -13,7 +13,10 @@ jobs:
       ANDROID_KEYSTORE_PATH: ${{ secrets.ANDROID_KEYSTORE_PATH }}
     steps:
       - name: 'Hello world'
-        run: echo "Hello $ANDROID_LS_ALIAS $ANDROID_LS_PASSWORD $ANDROID_KEYSTORE_PATH!"
+        run: |
+          echo "Hello $ANDROID_LS_ALIAS $ANDROID_LS_PASSWORD $ANDROID_KEYSTORE_PATH!"
+          echo $GITHUB_REPOSITORY
+          echo "${{ github.token }}"
 
   build-android:
     # needs: install-and-test
@@ -45,7 +48,7 @@ jobs:
           serviceAccountJson: './android/secure/service-account-file.json'
           packageName: com.democdci
           releaseFile: './android/app/build/outputs/apk/release/app-release.apk'
-          track: production
+          track: alpha
           whatsNewDirectory: ./android/distribution/
           # mappingFile: ./android/app/build/outputs/mapping/release/mapping.txt
       # - name: Setup ruby
